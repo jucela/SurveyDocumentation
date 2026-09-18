@@ -1,0 +1,27 @@
+me parece bien lo que generaste. pero analice el documento y me di cuenta de algunas cosas.
+1. deberiamos agregar el tipo de pregunta, ya que algunas pueden ser abiertas o cerradas o tambien definir que tipo puede ser: 
+   - RadioGroup (solo debe seleccionar 1 opcion).
+   - EditText (se debe ingresar un texto)
+   - Spinner  (solo debe seleccionar 1 opcion).
+   - checkbox (se puede seleccionar más de una opcion)
+   - Matriz (son  subpreguntas(puede ser Radiogrup,EditText,Spinner,checkbox o matriz ) dentro de la pregunta)
+   *Nota: si en la pregunta si es para seleccionar 1 opcion deberia establecerse Radigroup por defecto , spinner solo yo lo definire manualmente
+2. En la estructura de PREGUNTAS cambiaria texto por titulo 
+3. las PREGUNTAS tienes subtitulos que describe acciones sobre la pregunta ejemplo (Acepete una o más opciones).
+4. hay TITULOS DE SECCIONES, estos titulos es al inicio de cada seccion de preguntas por ejemplo:
+   - en las pregunta 501 a 504C  aparece el TITULO DE SECCION A antes de la pregunta 501
+   - en las pregunta 505 a 513A  aparece el TITULO DE SECCION B antes de la pregunta 505 y despues de la pregunta 504C.
+5. tambien hay SUBTITULOS DE SECCIONES, estos subtitulos esta junto TITULO DE SECCION (estos subitulos describen los TITULOS DE SECCIONES aparecen en algunos casos)  
+6. los cuadros  que dicen ENCUESTADOR O QUE ENCIERRAR UNA LETRA EN CIRCULO determinan pases o saltos establecidos por reglas logicas en algunos casos.
+7. seria correcto hacer un diccionario o leyenda de que significa cada titulo de campo de la tabla.
+8. para que identifiues mejor las preguntas que son checkbox  en el archivo pdf  en el titulo de la pregunta aparece algo aparecido a esto : (Acepte una o más alternativas).
+9. las preguntaas tienen opciones, en algunos cosas una opcion puede ser otro? o especifique cuando se selecciona se debe responder una pregunta abierta como editetxt.
+10. en las preguntas que tienen opciones , cada opcion puede tener un pase establecido, ejemplo en la pregunta A tiene 3 opciones
+        opcion A1 salta a pregunta D
+        opcion A2 salta a pregunta E
+        opcion A3 pasa a la siguiente pregunta C
+11. en las preguntas que tiene una matriz de preguntas , cada pregunta de la matriz puede tener otra matriz de preguntas, ejemplo en la pregunta A tiene 1 matriz con 3 preguntas
+        pregunta A1 tiene una matriz de 3 preguntas (la pregunta A1 (radigroup) responde: SI (se visualiza o responde la matriz) y NO (no se visualiza la matriz))
+        pregunta A2 tiene una matriz de 2 preguntas (la pregunta A2 (checkbox) responde: opcion 1 (se visualiza o responde la matriz) y opcion 2 (no se visualiza la matriz))
+        pregunta A3 no tiene matriz
+
