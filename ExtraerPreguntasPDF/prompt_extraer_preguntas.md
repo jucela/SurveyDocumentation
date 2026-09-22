@@ -8,10 +8,10 @@
 # ============================================================
 
 NOMBRE DEL PDF:
-CAPITULO_500_2026.pdf
+CAP400.pdf
 
 CAPÍTULO:
-500
+400
 
 AÑO:
 2026
@@ -965,22 +965,23 @@ subpreguntas/matriz con comportamiento propio.
 
 Estructura obligatoria:
 
-| ID | Año | Capítulo | Sección | Código | Padre | Nivel | Orden | Tipo | Componente UI | Título | Subtítulo | Página |
+| ID | Año | Capítulo | Sección | Campo_Tabla | Padre | Nivel | Orden | Tipo | Componente UI | Página | Título | Subtítulo |
 |---|---:|---:|---|---|---|---:|---:|---|---|---|---|---|
 
 REGLAS:
 
 1. ID = identificador histórico estable.
-2. Código = código oficial de la pregunta, si existe.
+2. Campo_Tabla = código o nombre de campo en la base de datos.
 3. Padre = ID del elemento superior.
 4. Nivel = profundidad jerárquica.
 5. Orden = posición visual/presentación dentro del año.
 6. Tipo = ABIERTA, CERRADA_UNICA, CERRADA_MULTIPLE o MATRIZ.
 7. Componente UI = EditText, RadioGroup, CheckBox, Matriz o Spinner
    solo cuando corresponda según las reglas de este prompt.
-8. Título = transcripción literal del PDF.
-9. Subtítulo = texto complementario literal, separado del título.
-10. Página = página o páginas donde aparece.
+8. Numeracíón = numero de pregunta real (puede contener LETRAS).
+9. Título = transcripción literal del PDF.
+10. Subtítulo = texto complementario literal, separado del título.
+
 
 NO incluir como registros de pregunta:
 - Persona N°;
@@ -1003,14 +1004,20 @@ registro hijo del catálogo.
 
 Ejemplo:
 
-| ID | Código | Padre | Nivel | Orden | Tipo | Componente UI | Título |
+| ID | Campo_Tabla | Padre | Nivel | Orden | Tipo | Componente UI | Título |
 |---|---|---|---:|---:|---|---|---|
 | P500-504 | 504 | — | 0 | 10 | MATRIZ | Matriz | ... |
 | P500-504/ITEM-01 | — | P500-504 | 1 | 1 | CERRADA_UNICA | RadioGroup | ... |
 | P500-504/ITEM-02 | — | P500-504 | 1 | 2 | ABIERTA | EditText | ... |
 
-El código "—" significa que el PDF no presenta un código oficial
+El Campo_Tabla "—" significa que el PDF no presenta un código oficial
 para esa subpregunta. NO inventar uno.
+
+El Campo_Tabla se genera de un parte del ID, por ejemplo ID=P500-504A-1 entonces Campo_Tabla = 504A_1.
+
+la columna Padre tendra el nombre de ID en las subbpreguntas.
+
+Numeracíón tendra la identificicacion de la pregunta antes del incicio del texto de la pregunta.
 
 Si una subpregunta tiene código oficial, registrarlo.
 
@@ -1048,15 +1055,15 @@ subpreguntas que tengan alternativas.
 
 Estructura:
 
-| Año | Pregunta | Ítem | Código | Orden | Texto | Tipo opción | Campo dependiente |
+| Año | Pregunta | Campo_Tabla | Orden | Numeración | Texto | Tipo opción | Campo dependiente |
 |---:|---|---|---|---:|---|---|---|
 
 REGLAS:
 
 - Pregunta = ID de la pregunta/subpregunta padre.
-- Ítem = identificador del ítem de alternativa si existe.
-- Código = código oficial de la alternativa.
+- Campo_Tabla = código o nombre de campo en la base de datos, este se presentara en las     alternativas del componente checkbox.
 - Orden = posición visual de la alternativa dentro de esa pregunta.
+- Numeracíón = numero de pregunta real (puede contener LETRAS).
 - Texto = texto literal del PDF.
 - Tipo opción = clasificación de la alternativa.
 - Campo dependiente = componente activado por esa alternativa, cuando
@@ -1170,10 +1177,11 @@ Como mínimo:
 | Sección | Sección |
 | Título de sección | Título |
 | Subtítulo de sección | Subtítulo |
-| Código | Código oficial |
+| Campo_Tabla | código o nombre de campo en la base de datos |
 | Padre | Elemento superior |
 | Nivel | Profundidad |
 | Orden | Posición |
+| Numeracíón | numero de pregunta real|
 | Tipo | Tipo de pregunta |
 | Componente UI | Componente |
 | Título | Título de pregunta |
